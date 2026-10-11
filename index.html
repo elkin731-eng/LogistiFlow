@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LogistiFlow | Control Logístico</title>
+    <meta
+      name="description"
+      content="Plataforma de gestión logística avanzada para inventario, estanterías y trazabilidad en tiempo real."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-wrap">
+          <div class="brand-badge">L</div>
+          <div>
+            <p class="eyebrow">OPERACIONES</p>
+            <h1>LogistiFlow</h1>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-item active">
+            <span class="nav-icon">◫</span>
+            Overview
+          </button>
+          <button class="nav-item">
+            <span class="nav-icon">▣</span>
+            Inventario
+          </button>
+          <button class="nav-item">
+            <span class="nav-icon">▤</span>
+            Estanterías
+          </button>
+          <button class="nav-item">
+            <span class="nav-icon">⊞</span>
+            Picking
+          </button>
+          <button class="nav-item">
+            <span class="nav-icon">⚑</span>
+            Alertas
+          </button>
+        </nav>
+
+        <div class="mini-card danger">
+          <div>
+            <p class="eyebrow">CRÍTICO</p>
+            <strong>12 SKU sin stock</strong>
+          </div>
+          <span class="mini-tag">2 h</span>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">PANEL DE CONTROL</p>
+            <h2>Warehouse Command Center</h2>
+          </div>
+          <div class="header-actions">
+            <button class="ghost-button">Exportar</button>
+            <button class="primary-button">+ Nuevo movimiento</button>
+          </div>
+        </header>
+
+        <section class="kpis" id="kpis"></section>
+
+        <section class="content-grid">
+          <div class="panel panel-wide">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">ESTANTERÍAS</p>
+                <h3>Mapa de almacenamiento</h3>
+              </div>
+              <div class="chip chip-success">97.2% ocupación</div>
+            </div>
+
+            <div class="warehouse-grid" id="warehouseGrid"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">RITMO</p>
+                <h3>Picking</h3>
+              </div>
+            </div>
+
+            <div class="queue" id="pickingQueue"></div>
+          </div>
+        </section>
+
+        <section class="content-grid content-grid-bottom">
+          <div class="panel panel-wide">
+            <div class="panel-header panel-header-inline">
+              <div>
+                <p class="eyebrow">INVENTARIO</p>
+                <h3>Activos por SKU</h3>
+              </div>
+              <div class="toolbar">
+                <input id="searchInput" type="search" placeholder="Buscar SKU o referencia" />
+                <select id="statusFilter">
+                  <option value="all">Todos</option>
+                  <option value="healthy">Ok</option>
+                  <option value="warning">Bajo stock</option>
+                  <option value="critical">Crítico</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>SKU</th>
+                    <th>Producto</th>
+                    <th>Ubicación</th>
+                    <th>Stock</th>
+                    <th>Rotación</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody id="inventoryTable"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">ALERTAS</p>
+                <h3>Monitor</h3>
+              </div>
+            </div>
+
+            <div class="alert-list" id="alertList"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
